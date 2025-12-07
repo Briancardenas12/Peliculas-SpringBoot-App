@@ -5,7 +5,25 @@
 <body>
 <header th:insert="~{layouts/header :: header}"></header>
 <div class="container">
-    SOY EL HOME
+    <div class="row row-cols-1 row-cols-md-6 g-4">
+        <div class="col" th:each="pelicula : ${peliculas}">
+            <div class="card">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR4SrKWF4AduTCYytAtbAAv4hwxkpmgXaYDsg&s"
+                     class="card-img-top" alt="foto">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${pelicula.nombre}"></h5>
+                    <p class="card-text" th:text="${pelicula.genero.nombre}"></p>
+                    <div class="catalogo-actor-container" th:each="protagonista : ${pelicula.protagonistas}">
+                        <div class="catalogo-actor-imagen" th:style="'background-image:url(' + ${protagonista.urlImagen} + ')'">
+                        </div>
+                        <div class="catalogo-actor-texto" th:text="${protagonista.nombre}">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 </body>
